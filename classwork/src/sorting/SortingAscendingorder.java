@@ -19,6 +19,6 @@ public class SortingAscendingorder {
         }
 
         for(String elements:Stingarray)
-            System.out.println(elements);
+            System.out.println("elements :" +elements);
     }
 }
