@@ -2,6 +2,10 @@ package sorting;
 
 import java.util.Scanner;
 
+// Given a string
+// Return a string array with the words ordered by the number within them
+// example input: "is2 Thi1s T4est 3a"
+// example output: "Thi1s is2 3a T4est"
 public class StringNumericalSort {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
