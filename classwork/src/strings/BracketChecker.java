@@ -19,13 +19,22 @@ public class BracketChecker {
         Scanner sc = new Scanner(System.in);
         String inputString = sc.nextLine();
         boolean returnBool = checkerReplaceAll(inputString);
-        boolean returnBool2 = checkerStack(inputString);
+        boolean returnBool2 = checkerDeque(inputString);
         System.out.println(returnBool);
         System.out.println(returnBool2);
     }
 
+    //([{}])
+    //([])
+    //()
+    //""
+    //{[(])}
+    //()
+    //[]
+    //{}
+    //{[(])} > 0
     public static boolean checkerReplaceAll(String input){
-        String workString = input;
+        String workString = input.replaceAll("^\\(\\)\\[]\\{}]","");
         while(workString.contains("()") || workString.contains("[]")|| workString.contains("{}")){
             workString = workString.replaceAll("\\(\\)","") // ()
                     .replaceAll("\\{}","") //{}
@@ -44,15 +53,16 @@ public class BracketChecker {
                     if (deque.peekFirst()=='{' && ch == '}'|| deque.peekFirst()=='[' && ch==']' || deque.peekFirst()=='(' && ch==')'){
                         deque.removeFirst();
                     }
-                    else return false;
                 }
             }
         }
         return deque.size()==0;
     }
 
+    //(hello[world]touche)
+    // true
     public static boolean checkerStack(String input){
-        Stack<Character> stack = new Stack<>();
+        Stack<Character> stack = new Stack<>(); //LIFO - > Last in, First out //Stack -> stack.push, stack.pop
         for (Character ch: input.toCharArray()){
             if (ch=='('|| ch=='{'|| ch=='['){
                 stack.push(ch);
@@ -61,8 +71,6 @@ public class BracketChecker {
                 if (stack.peek() == '(' && ch ==')' || stack.peek()=='[' && ch ==']' || stack.peek() == '{' && ch == '}'){
                     stack.pop();
                 }
-                else
-                    return false;
             }
         }
         return stack.isEmpty();
