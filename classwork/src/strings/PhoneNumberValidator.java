@@ -17,7 +17,6 @@ public class PhoneNumberValidator {
 
     public static boolean regexValidator(String input){
         String cleanInput = input.replaceAll("[a-zA-Z ]", "");
-        if (cleanInput.length()>9){
             if(cleanInput.length()== 10){
                 return true;
             }
@@ -26,7 +25,6 @@ public class PhoneNumberValidator {
                     return true;
                 }
             }
-        }
         return false;
     }
 }
